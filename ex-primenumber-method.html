@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prime number with method</title>
+</head>
+<body>
+    <h2>prime numbers</h2>
+    <script>
+        numbers = {};
+        numbers.all = [];
+        numbers.prime = [];
+        numbers.isPrime = function(num){
+            if (num == 1 || num == 2) return true
+            for (var i = 2; i <= num ** 0.5; i++){
+                if (num % i == 0) return false
+            }
+            return true
+        }
+        numbers.addPrime = function(num){
+            if (this.isPrime(num)) this.prime.push(num);
+        }
+        numbers.getAllprimes = function(){
+            for (var k = 0; k < this.all.length; k++){
+                if (this.isPrime(this.all[k])) this.addPrime(this.all[k])
+            }
+
+            for (var j = 0; j < this.prime.length; j++){
+                document.write(this.prime[j] + "<br>");
+            }
+        }
+        numbers.addAll = function(max_num){
+            for (var num = 1; num <= max_num; num++){
+                this.all.push(num);
+            }
+        }
+
+        numbers.addAll(10000);
+        numbers.getAllprimes();
+    </script>
+</body>
+</html>
